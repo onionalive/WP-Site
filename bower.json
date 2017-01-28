@@ -1,0 +1,14 @@
+{
+  "name": "scripts",
+  "version": "0.0.1",
+  "author": "onionalive",
+  "devDependencies": {
+    "jquery": "1.11.x",
+    "normalize-scss": "~3.0.3",
+    "bourbon": "~4.2.4",
+    "neat": "~1.7.2",
+    "geolib": "~2.0.18",
+    "momentjs": "~2.10.6",
+    "components-font-awesome": "~4.4.0"
+  }
+}
