@@ -5,6 +5,9 @@
   "author": "onionalive",
   "dependencies": {},
   "devDependencies": {
+		"node-sass": "^4.4.0",
+		"babel-core": "^6.22.1",
+		"eslint": "^3.14.1",
     "browserify": "^11.0.1",
     "dotenv": "^1.2.0",
     "imagemin-pngquant": "^4.2.0",
@@ -22,6 +25,10 @@
   },
   "scripts": {
     "install": "npm install && bower install",
-		"setup": "setup.js"
+		"setup": "setup.js",
+		"lint": "jshint **.js",
+		"build:sass": "node-sass -r --output-style compressed src/style.scss -o dist",
+		"build:js": "babel-core -r --output-style compressed src/scripts.js -o dist",
+  	"watch:sass": "npm run build:sass && npm run build:sass -- -w"
   }
 }
