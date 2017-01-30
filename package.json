@@ -1,7 +1,7 @@
 {
     "name": "script",
     "private": true,
-    "version": "0.0.1",
+    "version": "0.0.2",
     "author": "onionalive",
     "dependencies": {},
     "devDependencies": {
@@ -15,17 +15,14 @@
         "node-bourbon": "^4.2.3",
         "node-neat": "^1.7.2",
         "rimraf": "^2.4.3",
-        "run-sequence": "^1.1.2",
-        "stream-browserify": "^2.0.1",
-        "vinyl-buffer": "^1.0.0",
-        "vinyl-source-stream": "^1.1.0"
+        "run-sequence": "^1.1.2"
     },
     "engines": {
         "node": ">=0.10.0"
     },
     "scripts": {
-        "install": "npm install && bower install && composer install",
-        "setup": "setup.js",
+        "setup": "npm install && composer install",
+				"wordpressinstall": "./scripts/wordpress.sh",
         "lint": "jshint **.js",
         "build:sass": "node-sass -r --output-style compressed src/style.scss -o dist",
         "build:js": "babel-core -r --output-style compressed src/scripts.js -o dist",
