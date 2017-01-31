@@ -14,7 +14,7 @@ echo "Done!"
 
 # Create database to connect wordpress to
 echo "*////////////////////////////////////////////////////////"
-echo " *               Wordpress Setup                        *"
+echo "*               Wordpress Setup                        *"
 echo "*///////////////////////////////////////////////////////"
 echo ""
 echo "Let's get the information for the database to connect to"
@@ -50,15 +50,16 @@ sed -i "/^$SEARCH/s/put your unique phrase here/$(echo $REPLACE | sed -e 's/\\/\
 done <<< "$SALTS"
 
 # Download timber blank starter theme
+echo ""
 read -r -p "Do you want to download the timber starter theme? [y/n]" startertheme
 if [ startertheme=y ]
 then
 	cd ..
-	mkdir -p wp-config/themes/$database_name
-	cd wp-content/themes/$database_name
+	mkdir -p wp-content/themes
+	cd wp-content/themes
 	git clone https://github.com/timber/starter-theme
 	echo ""
-	echo "Awesome, theme was installed in /wp-config/themes/${database_name}"
+	echo "Awesome, theme was installed in /wp-config/themes/"
 fi
 
 echo ""
