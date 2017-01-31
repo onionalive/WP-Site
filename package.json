@@ -21,7 +21,7 @@
         "node": ">=0.10.0"
     },
     "scripts": {
-        "setup": "npm install && composer install",
+        "setup": "npm install && bower install && composer install",
 				"wordpressinstall": "./scripts/wordpress.sh",
         "lint": "jshint **.js",
         "build:sass": "node-sass -r --output-style compressed src/style.scss -o dist",
