@@ -18,12 +18,5 @@ After this, a bash script runs that modifies the wp-config file for you. Just in
 
 
 Build System: npm
-"setup": "npm install && composer install",
-"wordpresssetup": "./scripts/wordpress.sh",
-"lint": "jshint **.js",
-"build:sass": "node-sass -r --output-style compressed src/style.scss -o dist",
-"build:js": "babel-core -r --output-style compressed src/scripts.js -o dist && browserify src/js/main.js -o dist",
-"build:all": "npm run build:sass && npm run build:js",
-"watch:css": "onchange 'src/scss/*.scss' -- npm run build:css",
-"watch:js": "onchange 'src/js/*.js' -- npm run build:js",
-"watch:all": "parallelshell 'npm run watch:css' 'npm run watch:js'"
+Compile SASS, JS (ES6 - Babel)
+Watch For Changes
