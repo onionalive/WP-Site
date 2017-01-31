@@ -8,13 +8,9 @@
   "require": {
     "php": ">=5.4",
     "johnpbloch/wordpress": "4.6.1",
-    "sunra/php-simple-html-dom-parser": "^1.5",
-    "wpackagist-plugin/mailgun": "1.4.1",
-    "wpackagist-plugin/disable-emojis":"1.5.2",
     "wpackagist-plugin/regenerate-thumbnails":"2.2.6",
     "wpackagist-plugin/custom-post-type-ui":"1.4.3",
-    "wpackagist-plugin/timber-library":"1.1.10",
-    "wpackagist-plugin/tinymce-advanced": "4.4.1"
+    "wpackagist-plugin/timber-library":"1.1.10"
   },
   "extra": {
     "wordpress-install-dir": "wp"
