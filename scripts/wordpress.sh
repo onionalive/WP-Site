@@ -59,7 +59,10 @@ then
 	cd wp-content/themes
 	git clone https://github.com/timber/starter-theme
 	echo ""
-	echo "Awesome, theme was installed in /wp-config/themes/"
+	echo "Awesome! The theme was installed in /wp-config/themes/"
+	echo ""
+	echo "Just let me add the JS to the theme and we should be good to go..."
+	sed -i '2i <script src="{{site.theme.link}}/main.js" type="text/javascript">' ./starter-theme/templates/footer.twig
 fi
 
 echo ""
