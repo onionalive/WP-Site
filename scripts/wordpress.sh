@@ -13,6 +13,9 @@ mv ../wp/wp-config-sample.php ../wp/wp-config.php
 echo "Done!"
 
 # Create database to connect wordpress to
+echo "*////////////////////////////////////////////////////////"
+echo " *               Wordpress Setup                        *"
+echo "*///////////////////////////////////////////////////////"
 echo "Let's get the information for the database to connect to"
 read -r -p "Database name: " database_name
 read -r -p "Database User: " database_user
@@ -29,3 +32,6 @@ sed -ie "s/password_here/$database_pw/g" ../wp/wp-config.php
 # correct directory
 sed -i "40i define( 'WP_CONTENT_DIR', dirname(dirname(__FILE__)) . '/wp-content' );" ../wp/wp-config.php
 sed -i "41i define( 'WP_CONTENT_URL', 'http://localhost/wp-$database_name/wp-content' )" ../wp/wp-config.php
+echo "Done, wp-config should be updated."
+echo "Dont forget to turn on timber and switch to the correct theme in the WP admin"
+echo ":^)"
