@@ -35,7 +35,7 @@ sed -ie "s/password_here/$database_pw/g" ../wp/wp-config.php
 # update wp-config to point to
 # correct directory
 sed -i "40i define( 'WP_CONTENT_DIR', dirname(dirname(__FILE__)) . '/wp-content' );" ../wp/wp-config.php
-sed -i "41i define( 'WP_CONTENT_URL', 'http://localhost/wp-$database_name/wp-content' );" ../wp/wp-config.php
+sed -i "41i define( 'WP_CONTENT_URL', 'http://localhost/extra/wp-site/wp-content' );" ../wp/wp-config.php
 echo "Done, grabbing salts from wordpress API and applying to config"
 echo ""
 
@@ -48,6 +48,18 @@ REPLACE=$(echo "$SALT" | cut -d "'" -f 4)
 echo "... $SEARCH ... $SEARCH ..."
 sed -i "/^$SEARCH/s/put your unique phrase here/$(echo $REPLACE | sed -e 's/\\/\\\\/g' -e 's/\//\\\//g' -e 's/&/\\\&/g')/" ../wp/wp-config.php
 done <<< "$SALTS"
+
+# Download timber blank starter theme
+read -r -p "Do you want to download the timber starter theme? [y/n]" startertheme
+if [ startertheme=y ]
+then
+	cd ..
+	mkdir -p wp-config/themes/$database_name
+	cd wp-content/themes/$database_name
+	git clone https://github.com/timber/starter-theme
+	echo ""
+	echo "Awesome, theme was installed in /wp-config/themes/${database_name}"
+fi
 
 echo ""
 echo "Done, wp-config should be updated."
