@@ -9,7 +9,7 @@
         "babel-core": "^6.22.1",
         "babel-cli": "^6.22.2",
         "babelify": "^7.2.0",
-				"watch": "latest",
+				"gulp": "latest",
 				"parallelshell": "latest",
         "eslint": "^3.14.1",
         "browserify": "^14.0.0",
@@ -22,14 +22,14 @@
         "node": ">=0.10.0"
     },
     "scripts": {
-        "setup": "npm install && composer install && bower install",
+        "setup": "npm install && composer install && bower install && gulp build",
         "setuppost": "./scripts/wordpress.sh && npm run build:all",
         "lint": "jshint **.js",
-        "build:css": "node-sass -r --output-style compressed src/scss/style.scss -o wp-content/themes/starter-theme",
-        "build:js": "browserify src/js/main.js | babel > wp-content/themes/starter-theme/main.js",
+        "build:css": "node-sass -r --output-style compressed theme-src/scss/style.scss -o wp-content/themes/starter-theme",
+        "build:js": "browserify theme-src/js/main.js | babel > wp-content/themes/starter-theme/main.js",
         "build:all": "npm run build:sass && npm run build:js",
-        "watch:css": "watch 'npm run build:css' src/scss",
-        "watch:js": "onchange 'src/js/*.js' -- npm run build:js",
+        "watch:css": "watch 'npm run build:css' theme-src/scss",
+        "watch:js": "onchange 'theme-src/js/*.js' -- npm run build:js",
         "watch:all": "parallelshell 'npm run watch:css' 'npm run watch:js'"
     }
 }
