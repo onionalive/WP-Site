@@ -13,6 +13,8 @@ cp ../wp/.htaccess ../.htaccess
 mv ../wp/wp-config-sample.php ../wp/wp-config.php
 echo "Done!"
 echo ""
+read -r -p "What is the site/theme name?" site_name ; echo ""
+sed -ie "s/site_name/${site_name}/g" ../gulpfile.js
 
 # Create database to connect wordpress to
 echo "*////////////////////////////////////////////////////////"
@@ -57,6 +59,13 @@ done <<< "$SALTS"
 
 # Download timber blank starter theme
 echo ""
+read -r -p "Are you using an existing theme? [y/n]" existingtheme
+if [[ $existingtheme = y ]] ; then
+	echo ""
+	echo "Setting up the existing theme..." ; echo ""
+	bash existingtheme.sh
+	echo "Done!" ; echo ""
+else
 read -r -p "Do you want to download the timber starter theme? [y/n]" startertheme
 if [[ $startertheme = y ]] ; then
 	cd ..
@@ -68,6 +77,7 @@ if [[ $startertheme = y ]] ; then
 	echo ""
 	echo "Just let me add the JS to the theme and we should be good to go..."
 	sed -i '1i <script src="{{site.theme.link}}/main.js" type="text/javascript">' ./starter-theme/templates/footer.twig
+fi
 fi
 
 echo ""
