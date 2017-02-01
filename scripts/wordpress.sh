@@ -2,7 +2,8 @@
 # This script sets up wordpress and connects it to the database
 # it should be ran AFTER
 # Git clone, npm install, and bower have been run
-
+echo ""
+echo ""
 echo "moving around necessary files..."
 #Move .htaccess file
 cp ../wp/.htaccess ../.htaccess
@@ -11,6 +12,7 @@ cp ../wp/.htaccess ../.htaccess
 # otherwise will do nothing
 mv ../wp/wp-config-sample.php ../wp/wp-config.php
 echo "Done!"
+echo ""
 
 # Create database to connect wordpress to
 echo "*////////////////////////////////////////////////////////"
@@ -21,7 +23,7 @@ echo "Let's get the information for the database to connect to"
 echo ""
 read -r -p "Database name: " database_name
 read -r -p "Database User: " database_user
-read -r -p "Database Password: " database_pw
+read -s -p "Database Password: " database_pw
 
 echo ""
 echo "Awesome, updating wp-config with this information."
@@ -31,6 +33,10 @@ echo ""
 sed -ie "s/database_name_here/$database_name/g" ../wp/wp-config.php
 sed -ie "s/username_here/$database_user/g" ../wp/wp-config.php
 sed -ie "s/password_here/$database_pw/g" ../wp/wp-config.php
+echo "connecting to $database_name"
+echo "using user: $database_user..."
+echo ""
+
 
 # update wp-config to point to
 # correct directory
@@ -52,8 +58,7 @@ done <<< "$SALTS"
 # Download timber blank starter theme
 echo ""
 read -r -p "Do you want to download the timber starter theme? [y/n]" startertheme
-if [ startertheme=y ]
-then
+if [[ $startertheme = y ]] ; then
 	cd ..
 	mkdir -p wp-content/themes
 	cd wp-content/themes
@@ -62,7 +67,7 @@ then
 	echo "Awesome! The theme was installed in /wp-config/themes/"
 	echo ""
 	echo "Just let me add the JS to the theme and we should be good to go..."
-	sed -i '2i <script src="{{site.theme.link}}/main.js" type="text/javascript">' ./starter-theme/templates/footer.twig
+	sed -i '1i <script src="{{site.theme.link}}/main.js" type="text/javascript">' ./starter-theme/templates/footer.twig
 fi
 
 echo ""
